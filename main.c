@@ -170,11 +170,12 @@ static char *lerArquivo(const char *caminho) {
 int login(void) {
     char usuario[50];
     char senha[50];
+    int tentativa;
     int max = 3; // Numero maximo de tentativas
 
     printf("Voce tem %d tentativas para fazer login.\n", max);
 
-    for (int tentativa = 1; tentativa <= max; tentativa++) {
+    for (tentativa = 1; tentativa <= max; tentativa++) {
         capturarEntrada("Digite o usuario: ", usuario, sizeof(usuario));
         capturarEntrada("Digite a senha: ", senha, sizeof(senha));
 
@@ -259,6 +260,7 @@ void imprimirTexto(void) {
     }
 
  char texto[200];
+ int i;
     capturarEntrada("Digite os dados para o texto: ", texto, sizeof(texto));
     int copias = lerInteiro("Digite o numero de copias: ");
     if (copias < 1) {
@@ -266,7 +268,7 @@ void imprimirTexto(void) {
         return;
     }
 
-    for (int i = 0; i < copias; i++) {
+    for (i = 0; i < copias; i++) {
         int retorno = ImpressaoTexto(texto, 1, 4, 0);
         if (retorno != 0) {
             printf("Erro ao imprimir texto. Codigo de erro: %d\n", retorno);
